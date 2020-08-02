@@ -7,21 +7,28 @@ class Layout extends React.Component {
     super(props, context)
     this.state = this.getInitState();
     this.getInitState = this.getInitState.bind(this);
+    this.changeShowNavbar = this.changeShowNavbar.bind(this);
   }
   getInitState() {
     return {
-      page: "Dashboard Page"
+      page: "Dashboard Page",
+      showNavBar: false
     }
   }
   componentDidMount() {
     document.title = "Mindbase Dashboard"
   }
+  changeShowNavbar() {
+    this.setState({
+      showNavBar: !this.state.showNavBar
+    })
+  }
   render() {
     return (
       <div className="sidebar-mini layout-fixed">
         <div className="wrapper">
-          <Sidebar />
-          <Navbar />
+          <Sidebar changeShowNavbar={this.changeShowNavbar} />
+          <Navbar showNavBar={this.state.showNavBar} changeShowNavbar={this.changeShowNavbar} />
           {this.props.children}
         </div>
       </div>

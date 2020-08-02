@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import history from '../history';
+import { Link, NavLink } from "react-router-dom";
+import history from '../../admin/common/history';
 import * as authUtil from "../utils/auth.util";
 import { ToastContainer, toast } from "react-toastify";
 
@@ -10,6 +10,7 @@ class Sidebar extends React.Component {
     this.state = this.getInitState();
     this.getInitState = this.getInitState.bind(this);
     this.logout = this.logout.bind(this);
+    this.changeShowNavbar = this.changeShowNavbar.bind(this)
   }
   getInitState() {
     return {
@@ -20,89 +21,96 @@ class Sidebar extends React.Component {
   componentDidMount() { }
 
   logout() {
+    localStorage.removeItem("mb_autorization");
+    localStorage.removeItem("mb_department");
+    localStorage.removeItem("mb_master");
     authUtil.logout();
     toast.success("You have been successfully logged out!");
     history.push("/");
   };
+
+  changeShowNavbar() {
+    this.props.changeShowNavbar();
+  }
 
   render() {
     return (
       <>
         <ToastContainer />
         <aside className="main-sidebar sidebar-light-primary">
-          <a className="brand-link">
-            <span className="brand-text font-weight-light">&nbsp;</span>
+          <a onClick={this.changeShowNavbar} data-widget="pushmenu" className="brand-link" style={{ cursor: "pointer" }}>
+            <span className="brand-text font-weight-light"><i class="fas fa-times"></i></span>
           </a>
           <div className="sidebar">
             <nav className="mt-2">
               <ul className="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
                 <li className="nav-item">
-                  <Link to="/master/dashboard" className="nav-link">
+                  <NavLink to="/master/dashboard" activeClassName="active" className="nav-link">
                     <i className="nav-icon fas fa-tachometer-alt"></i>
                     <p>
                       Dashboard
                   </p>
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link to="/master/department" className="nav-link">
+                  <NavLink to="/master/department" activeClassName="active" className="nav-link">
                     <i className="nav-icon 	fas fa-users"></i>
                     <p>
                       Department
                   </p>
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link to="/master/message" className="nav-link">
+                  <NavLink to="/master/message" activeClassName="active" className="nav-link">
                     <i className="nav-icon far fa-envelope"></i>
                     <p>
                       Message
                   </p>
-                  </Link>
+                  </NavLink>
                 </li>
 
 
                 <li className="nav-item">
-                  <Link to="/master/activity" className="nav-link">
+                  <NavLink to="/master/activity" activeClassName="active" className="nav-link">
                     <i className="nav-icon fas fa-skating"></i>
                     <p>
                       Activity
                   </p>
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link to="/master/icon" className="nav-link">
+                  <NavLink to="/master/icon" activeClassName="active" className="nav-link">
                     <i className="nav-icon fas fa-icons"></i>
                     <p>
                       Icons
                   </p>
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="nav-item">
 
-                  <Link to="/master/music" className="nav-link">
+                  <NavLink to="/master/music" activeClassName="active" className="nav-link">
                     <i className="nav-icon fas fa-music"></i>
                     <p>
                       Music
                   </p>
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link to="/master/feedback" className="nav-link">
+                  <NavLink to="/master/feedback" activeClassName="active" className="nav-link">
                     <i className="nav-icon fas fa-comments"></i>
                     <p>
                       Feedback
                   </p>
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link to="/master/gethelp" className="nav-link">
+                  <NavLink to="/master/gethelp" activeClassName="active" className="nav-link">
                     <i className="nav-icon fas fa-address-card"></i>
                     <p>
                       Get help
                   </p>
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="nav-item" onClick={this.logout}>
                   <a className="nav-link">

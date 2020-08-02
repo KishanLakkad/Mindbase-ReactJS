@@ -114,6 +114,10 @@ class AccountModal extends React.Component {
         let isValid = false;
         let errors = validate(data);
 
+        if (this.state.isEdit) {
+            errors.password = '';
+        }
+
         if (!errors.email && !errors.department && !errors.phone && !errors.password && !errors.profile) {
             isValid = true;
         }
@@ -132,7 +136,10 @@ class AccountModal extends React.Component {
             formData.append('email', this.state.email);
             formData.append('department', this.state.department);
             formData.append('phone', this.state.phone);
-            formData.append('password', this.state.password);
+
+            if (this.state.password) {
+                formData.append('password', this.state.password);
+            }
 
             if (typeof this.state.profile === 'object') {
                 formData.append('profile', this.state.profile);

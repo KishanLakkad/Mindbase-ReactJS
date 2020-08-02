@@ -98,7 +98,7 @@ class IndicatorOverView extends React.Component {
         startDate.setDate(startDate.getDate() - 30);
       }
       let senddata = {
-        department: localStorage.getItem("mb_department"),
+        // department: localStorage.getItem("mb_department"),
         startDate: moment(startDate).format("YYYY-MM-DDTHH:MM:SSZ"),
         endDate: moment(endDate).format("YYYY-MM-DDTHH:MM:SSZ")
       };
@@ -138,7 +138,7 @@ class IndicatorOverView extends React.Component {
         // }
 
         axios.defaults.headers.common['Authorization'] = localStorage.getItem("mb_autorization");
-        axios.post(`/mood/filterByDepartment`, senddata)
+        axios.post(`/mood/filter`, senddata)
           .then(function (response) {
             if (response.status === 200) {
               self.setState({
@@ -196,7 +196,7 @@ class IndicatorOverView extends React.Component {
       }
       if (self.state.activeMoodIndex === 1) {
         axios.defaults.headers.common['Authorization'] = localStorage.getItem("mb_autorization");
-        axios.post(`/mood/filterByDepartment`, senddata)
+        axios.post(`/mood/filter`, senddata)
           .then(function (response) {
             if (response.status === 200) {
               self.setState({
@@ -283,7 +283,7 @@ class IndicatorOverView extends React.Component {
         //   });
         // }
         axios.defaults.headers.common['Authorization'] = localStorage.getItem("mb_autorization");
-        axios.post(`/mood/filterByDepartment`, senddata)
+        axios.post(`/mood/filter`, senddata)
           .then(function (response) {
             if (response.status === 200) {
               self.setState({
@@ -355,7 +355,7 @@ class IndicatorOverView extends React.Component {
         //   ]
         // })
         axios.defaults.headers.common['Authorization'] = localStorage.getItem("mb_autorization");
-        axios.post(`/mood/filterByDepartment`, senddata)
+        axios.post(`/mood/filter`, senddata)
           .then(function (response) {
             if (response.status === 200) {
               self.setState({
@@ -410,7 +410,7 @@ class IndicatorOverView extends React.Component {
       }
       if (self.state.activeMoodIndex === 4) {
         axios.defaults.headers.common['Authorization'] = localStorage.getItem("mb_autorization");
-        axios.post(`/breathLog/filterByDepartment`, senddata)
+        axios.post(`/breathLog/filter`, senddata)
           .then(function (response) {
             if (response.status === 200) {
               self.setState({
@@ -469,7 +469,7 @@ class IndicatorOverView extends React.Component {
       if (self.state.activeMoodIndex === 5 || self.state.activeMoodIndex === 6 || self.state.activeMoodIndex === 7 || self.state.activeMoodIndex === 8 || self.state.activeMoodIndex === 9) {
         senddata['activity'] = self.state.moodList[self.state.activeMoodIndex]._id;
         axios.defaults.headers.common['Authorization'] = localStorage.getItem("mb_autorization");
-        axios.post(`/activityLog/filterByDepartmentAndActivity`, senddata)
+        axios.post(`/activityLog/filterByActivity`, senddata)
           .then(function (response) {
             if (response.status === 200) {
               self.setState({
@@ -565,7 +565,7 @@ class IndicatorOverView extends React.Component {
         // }
 
         axios.defaults.headers.common['Authorization'] = localStorage.getItem("mb_autorization");
-        axios.post(`/assistanceLog/filterByDepartment`, senddata)
+        axios.post(`/assistanceLog/filter`, senddata)
           .then(function (response) {
             if (response.status === 200) {
               self.setState({
@@ -669,12 +669,12 @@ class IndicatorOverView extends React.Component {
         startDate.setDate(startDate.getDate() - 30);
       }
       let senddata = {
-        department: localStorage.getItem("mb_department"),
+        // department: localStorage.getItem("mb_department"),
         startDate: moment(startDate).format("YYYY-MM-DDTHH:MM:SSZ"),
         endDate: moment(endDate).format("YYYY-MM-DDTHH:MM:SSZ")
       }
       axios.defaults.headers.common['Authorization'] = localStorage.getItem("mb_autorization");
-      axios.post(`/mood/filterByDepartment`, senddata)
+      axios.post(`/mood/filter`, senddata)
         .then(function (response) {
           if (response.status === 200) {
             self.setState({
@@ -752,7 +752,7 @@ class IndicatorOverView extends React.Component {
       endDate: moment(endDate).format("YYYY-MM-DDTHH:MM:SSZ")
     }
     axios.defaults.headers.common['Authorization'] = localStorage.getItem("mb_autorization");
-    axios.post(`/mood/filterByDepartment`, senddata)
+    axios.post(`/mood/filter`, senddata)
       .then(function (response) {
         if (response.status === 200) {
           self.setState({

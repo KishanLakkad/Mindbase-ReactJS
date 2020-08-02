@@ -29,17 +29,17 @@ const ProtectedRoute = ({ component: Component, layout: Layout, ...rest }) => (
     <Route
         {...rest}
         render={(props) =>
-            localStorage.getItem("mb_autorization") && localStorage.getItem("mb_department") ? (
-              <Layout {...props}>
-                <Component {...props} />
-              </Layout>
+            localStorage.getItem("mb_autorization") && localStorage.getItem("mb_master") ? (
+                <Layout {...props}>
+                    <Component {...props} />
+                </Layout>
             ) : (
-                <Redirect
-                    to={{
-                        pathname: "/",
-                        state: { from: props.location },
-                    }}
-                />
+                    <Redirect
+                        to={{
+                            pathname: "/",
+                            state: { from: props.location },
+                        }}
+                    />
                 )
         }
     />
@@ -50,7 +50,7 @@ const MasterRoutes = (props) => {
     return (
         <Switch>
             <ProtectedRoute layout={Layout} path="/master/dashboard" name="Dashboard Page" component={DashboardComponent} />
-            <ProtectedRoute layout={Layout} path="/master/adminDashboard/:id" name="Admin Dashboard Page" component={DashboardComponent} />
+            <ProtectedRoute layout={Layout} path="/master/adminDashboard/:id" name="Admin Dashboard Page" component={AdminDashboardComponent} />
             <ProtectedRoute layout={Layout} path="/master/department" name="Department Page" component={AccountComponent} />
             <ProtectedRoute layout={Layout} path="/master/message" name="Message Page" component={MessageComponent} />
             <ProtectedRoute layout={Layout} path="/master/music" name="Music Page" component={MusicComponent} />

@@ -19,7 +19,7 @@ class ActiveUsers extends React.Component {
   componentDidMount() {
     let self = this;
     axios.defaults.headers.common['Authorization'] = localStorage.getItem("mb_autorization");
-    axios.get(`/dailyMood/getActiveUser/${localStorage.getItem("mb_department")}`)
+    axios.get(`/dailyMood/getActiveUser`)
       .then(function (response) {
         if (response.status === 200) {
           self.setState({

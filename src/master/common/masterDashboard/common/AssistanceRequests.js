@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
-class ActiveUsers extends React.Component {
+
+class AssistanceRequests extends React.Component {
   constructor(props, context) {
     super(props, context)
     this.state = this.getInitState();
@@ -19,12 +20,12 @@ class ActiveUsers extends React.Component {
   componentDidMount() {
     let self = this;
     axios.defaults.headers.common['Authorization'] = localStorage.getItem("mb_autorization");
-    axios.get(`/dailyMood/getActiveUser/${localStorage.getItem("mb_department")}`)
+    axios.get(`/assistanceLog/getLog`)
       .then(function (response) {
         if (response.status === 200) {
           self.setState({
             moods: response.data.data
-          })
+          });
         }
       })
       .catch(function (error) {
@@ -33,12 +34,12 @@ class ActiveUsers extends React.Component {
   }
   render() {
     return (
-      <div className="bg-image bg-image1">
-        <div className="small-box" style={{ borderRadius: "20px", overflow: "hidden" }}>
+      <div className="bg-image bg-image3">
+        <div className="small-box" style={{ borderRadius: 18, overflow: "hidden" }}>
           <div className="inner">
             <div className="row">
               <div className="col-7">
-                <p style={{ marginBottom: 10, fontSize: 14, color: "#FFFFFF" }}>Active Users</p>
+                <p style={{ marginBottom: 10, fontSize: 14, color: "#FFFFFF" }}>Assistance Requests</p>
                 <h3 style={{ fontSize: 24, color: "#FFFFFF" }}>{this.state.moods[this.state.current]}</h3>
               </div>
               <div className="col-5">
@@ -54,4 +55,4 @@ class ActiveUsers extends React.Component {
   }
 }
 
-export default ActiveUsers
+export default AssistanceRequests

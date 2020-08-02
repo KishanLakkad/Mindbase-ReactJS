@@ -11,6 +11,9 @@ import {
   Lookup,
   Textarea,
 } from 'react-rainbow-components';
+import {
+  NavLink
+} from "react-router-dom";
 import "../../app/styles.css";
 import validate from "./validate";
 import AccountModal from "./modal";
@@ -18,6 +21,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { ApiGet, ApiDelete } from "../../helpers/API/ApiData";
 import { MDBIcon } from "mdbreact";
 import { confirmAlert } from 'react-confirm-alert';
+import history from '../../history';
 
 const drawerWidth = 240;
 const textStyles = {
@@ -79,9 +83,11 @@ class Account extends Component {
               &nbsp;&nbsp;
               <MDBIcon className="editButton" icon="trash" size="1x" onClick={() => this.delete(value.index, value.row._id)} />
               &nbsp;&nbsp;
-              <MDBIcon icon="tachometer-alt" className="editButton" size="1x" />
+              <NavLink to={`/master/adminDashboard/${value.row._id}`}>
+                  <MDBIcon icon="tachometer-alt" className="editButton" size="1x" />
+                </NavLink>
 
-              {/* <span className="editButton" icon="trash" size="1x"> <i className="nav-icon fas fa-tachometer-alt"></i></span> */}
+                {/* <span className="editButton" icon="trash" size="1x"> <i className="nav-icon fas fa-tachometer-alt"></i></span> */}
               </div>
             </>
           )
@@ -90,12 +96,17 @@ class Account extends Component {
     };
 
     this.getDepartments = this.getDepartments.bind(this);
+    this.dashboard = this.dashboard.bind(this)
     this.delete = this.delete.bind(this);
     this.onRefresh = this.onRefresh.bind(this);
   }
 
   componentDidMount() {
     this.getDepartments();
+  }
+
+  dashboard(id) {
+    history.push('/master/adminDashboard/' + id)
   }
 
   onRefresh() {

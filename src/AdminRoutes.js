@@ -27,34 +27,34 @@ export default function AdminRoutes() {
     <Switch>
 
       /*Admin Routes*/
-        <Route exact path="/">
-          <Login />
-        </Route>
-        <PrivateRoute layout={Layout} path={`${prefix}/dashboard`}>
-          <Dashboard />
-        </PrivateRoute>
-        <PrivateRoute layout={Layout} path={`${prefix}/messages`}>
-          <Messages />
-        </PrivateRoute>
-        <PrivateRoute layout={Layout} path={`${prefix}/indicators`}>
-          <Indicators />
-        </PrivateRoute>
-        <PrivateRoute layout={Layout} path={`${prefix}/profile`}>
-          <Profile />
-        </PrivateRoute>
-        <Route path={`${prefix}/forgot`}>
-          <Forgot />
-        </Route>
-        <Route path={`${prefix}/verify/:token`}>
-          <VerifyUser />
-        </Route>
-      /*End Admin Routes*/
+      <Route exact path="/">
+        <Login />
+      </Route>
+      <PrivateRoute layout={Layout} path={`${prefix}/dashboard`}>
+        <Dashboard />
+      </PrivateRoute>
+      <PrivateRoute layout={Layout} path={`${prefix}/messages`}>
+        <Messages />
+      </PrivateRoute>
+      <PrivateRoute layout={Layout} path={`${prefix}/indicators`}>
+        <Indicators />
+      </PrivateRoute>
+      <PrivateRoute layout={Layout} path={`${prefix}/profile`}>
+        <Profile />
+      </PrivateRoute>
+      <Route path={`${prefix}/forgot`}>
+        <Forgot />
+      </Route>
+      <Route path={`${prefix}/verify/:token`}>
+        <VerifyUser />
+      </Route>
+    /*End Admin Routes*/
 
     </Switch>
   );
 }
 
-function PrivateRoute({ children, layout: Layout, ...rest}) {
+function PrivateRoute({ children, layout: Layout, ...rest }) {
   return (
     <Route
       {...rest}
@@ -64,13 +64,13 @@ function PrivateRoute({ children, layout: Layout, ...rest}) {
             {children}
           </Layout>
         ) : (
-          <Redirect
-            to={{
-              pathname: "/",
-              state: { from: location }
-            }}
-          />
-        )
+            <Redirect
+              to={{
+                pathname: "/",
+                state: { from: location }
+              }}
+            />
+          )
       }
     />
   );
