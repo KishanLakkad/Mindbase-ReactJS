@@ -1,0 +1,21 @@
+.bg-image {
+    background: url('../../src/image/wave.png')no-repeat;
+    background-size: contain;
+    border-radius: 20px;
+}
+
+.bg-image1 {
+    background-color: #5b6de1;
+}
+
+.bg-image2 {
+    background-color: #65bddf;
+}
+
+.bg-image3 {
+    background-color: #62d290;
+}
+
+.bg-image5 {
+    background-color: #dfbb5f;
+}
