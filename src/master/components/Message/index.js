@@ -143,8 +143,7 @@ class Messages extends React.Component {
     if (objDiv) {
       objDiv.scrollTop = objDiv.scrollHeight;
     }
-    let adminToken = JSON.parse(localStorage.getItem("userinfo"));
-    let senderId = adminToken._id; // <-- put your admin id here
+    let senderId = localStorage.getItem("mb_master"); // <-- put your admin id here
     let recieverId = this.state.userList[userIndex]._id;
     let senderProfile = this.state.userList[userIndex].profile;
     this.setState({
@@ -153,15 +152,12 @@ class Messages extends React.Component {
       senderProfile,
       userName: this.state.userList[userIndex].firstName + " " + this.state.userList[userIndex].lastName
     });
-    console.log(senderId);
-    console.log(recieverId);
     try {
       db.ref(recieverId).orderByChild("refid").equalTo(senderId).on('value', (snapshot) => {
         let chats = [];
         snapshot.forEach((snap) => {
           chats.push(snap.val());
         });
-        console.log(chats);
         this.setState({ chats });
         // objDiv = document.getElementById("mychat");
         // objDiv.scrollTop = objDiv.scrollHeight;
@@ -213,7 +209,7 @@ class Messages extends React.Component {
                                   <div className="card-body text-center" style={{ padding: 5 }}>
                                     <div className="row">
                                       <div className="col-md-3" style={{ padding: 0, paddingLeft: 0 }}>
-                                        <img src={item.profile ? item.profile : "/assets/img/user_avtar.png"} style={{ borderRadius: "50%", height: 50, width: 50 }} />
+                                        <img src={item.profile ? item.profile : "/assets/img/user_avtar.jpg"} style={{ borderRadius: "50%", height: 50, width: 50 }} />
                                       </div>
                                       <div className="col-md-6 text-left">
                                         <span style={{ display: "block" }}>{item.firstName} {item.lastName}</span>
@@ -259,7 +255,7 @@ class Messages extends React.Component {
                                   <span style={{ display: "block", fontSize: 12, color: "grey" }}>Global Infotech Pvt Ltd., United States</span>
                                 </div>
                                 <div className="col-1 text-right" style={{ padding: 0 }}>
-                                  <img src={localStorage.getItem("mb_logo") ? localStorage.getItem("mb_logo") : "/assets/img/user_avtar.png"} style={{ borderRadius: "50%", height: 40, width: 40 }} />
+                                  <img src={localStorage.getItem("mb_logo") ? localStorage.getItem("mb_logo") : "/assets/img/user_avtar.jpg"} style={{ borderRadius: "50%", height: 40, width: 40 }} />
                                 </div>
                               </div>
                               <div className="row">
@@ -273,7 +269,7 @@ class Messages extends React.Component {
                             return <div style={{ width: "80%", float: "left", paddingTop: 20 }}>
                               <div className="row" style={{ marginBottom: 5 }}>
                                 <div className="col-1 text-right">
-                                  <img src={this.state.senderProfile ? this.state.senderProfile : "/assets/img/user_avtar.png"} style={{ borderRadius: "50%", height: 40, width: 40 }} />
+                                  <img src={this.state.senderProfile ? this.state.senderProfile : "/assets/img/user_avtar.jpg"} style={{ borderRadius: "50%", height: 40, width: 40 }} />
                                 </div>
                                 <div className="col-7 text-left">
                                   <span style={{ display: "block", fontSize: 12 }}>{this.state.userName}</span>
