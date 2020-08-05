@@ -43,7 +43,8 @@ class IndicatorOverView extends React.Component {
         { position: 'left', type: 'linear', stacked: true }
       ],
       chartRfresh: true,
-      chartData: [{ label: "Mood", data: [["Mon", 50], ["Tue", 175], ["Wed", 250], ["Thu", 50], ["Fri", 170], ["Sat", 190], ["Sun", 180]] }]
+      chartData: [{ label: "Mood", data: [["Mon", 50], ["Tue", 175], ["Wed", 250], ["Thu", 50], ["Fri", 170], ["Sat", 190], ["Sun", 180]] }],
+      chartTitle: "Behavioral Activity"
     }
   }
   componentDidMount() {
@@ -186,7 +187,8 @@ class IndicatorOverView extends React.Component {
               console.log(chartData);
               self.setState({
                 chartData,
-                chartRfresh: true
+                chartRfresh: true,
+                chartTitle: self.state.moodList[self.state.activeMoodIndex].shortTitle
               });
             }
           })
@@ -240,7 +242,8 @@ class IndicatorOverView extends React.Component {
               chartData.push(chartObj);
               self.setState({
                 chartData,
-                chartRfresh: true
+                chartRfresh: true,
+                chartTitle: self.state.moodList[self.state.activeMoodIndex].shortTitle
               });
             }
           })
@@ -335,7 +338,8 @@ class IndicatorOverView extends React.Component {
               chartData.push(chartObj);
               self.setState({
                 chartData,
-                chartRfresh: true
+                chartRfresh: true,
+                chartTitle: self.state.moodList[self.state.activeMoodIndex].shortTitle
               });
 
             }
@@ -400,7 +404,8 @@ class IndicatorOverView extends React.Component {
               chartData.push(chartObj);
               self.setState({
                 chartData,
-                chartRfresh: true
+                chartRfresh: true,
+                chartTitle: self.state.moodList[self.state.activeMoodIndex].shortTitle
               });
             }
           })
@@ -458,7 +463,8 @@ class IndicatorOverView extends React.Component {
               chartData.push(chartObj);
               self.setState({
                 chartData,
-                chartRfresh: true
+                chartRfresh: true,
+                chartTitle: self.state.moodList[self.state.activeMoodIndex].shortTitle
               });
             }
           })
@@ -517,7 +523,8 @@ class IndicatorOverView extends React.Component {
               chartData.push(chartObj);
               self.setState({
                 chartData,
-                chartRfresh: true
+                chartRfresh: true,
+                chartTitle: self.state.moodList[self.state.activeMoodIndex].shortTitle
               });
             }
           })
@@ -638,12 +645,13 @@ class IndicatorOverView extends React.Component {
                 ];
               });
               chartObj = {};
-              chartObj['label'] = "Text";
+              chartObj['label'] = self.state.moodList[self.state.activeMoodIndex].shortTitle;
               chartObj['data'] = groupArrays;
               chartData.push(chartObj);
               self.setState({
                 chartData,
-                chartRfresh: true
+                chartRfresh: true,
+                chartTitle: self.state.moodList[self.state.activeMoodIndex].shortTitle
               });
             }
           })
@@ -846,7 +854,7 @@ class IndicatorOverView extends React.Component {
             <div className="row">
               <div className="col-md-6" style={{ padding: "0" }}>
                 <div style={{ backgroundColor: "#4CB5D810", padding: 15, borderRadius: 20 }}>
-                  <span style={{ fontSize: 14 }}>Behavioral Activity</span>
+                  <span style={{ fontSize: 14 }}>{this.state.chartTitle}</span>
                   <div>
                     {/*Bar Chart Goes Here*/}
                     {
@@ -958,7 +966,7 @@ class IndicatorOverView extends React.Component {
             <div className="row">
               <div className="col-md-8">
                 <div style={{ backgroundColor: "#4CB5D810", padding: 15, borderRadius: 20 }}>
-                  <span style={{ fontSize: 14 }}>Behavioral Activity</span>
+                  <span style={{ fontSize: 14 }}>{this.state.chartTitle}</span>
                   <div>
                     {/*Bar Chart Goes Here*/}
                     {
@@ -1058,7 +1066,7 @@ class IndicatorOverView extends React.Component {
             <div className="row">
               <div className="col-md-6">
                 <div style={{ backgroundColor: "#4CB5D810", padding: 15, borderRadius: 20 }}>
-                  <span style={{ fontSize: 14 }}>Behavioral Activity</span>
+                  <span style={{ fontSize: 14 }}>{this.state.chartTitle}</span>
                   <div>
                     {/*Bar Chart Goes Here*/}
                     {
@@ -1178,7 +1186,7 @@ class IndicatorOverView extends React.Component {
             <div className="row">
               <div className="col-md-8">
                 <div style={{ backgroundColor: "#4CB5D810", padding: 15, borderRadius: 20 }}>
-                  <span style={{ fontSize: 14 }}>Behavioral Activity</span>
+                  <span style={{ fontSize: 14 }}>{this.state.chartTitle}</span>
                   <div>
                     {/*Bar Chart Goes Here*/}
                     {
@@ -1278,7 +1286,7 @@ class IndicatorOverView extends React.Component {
             <div className="row">
               <div className="col-md-8">
                 <div style={{ backgroundColor: "#4CB5D810", padding: 15, borderRadius: 20 }}>
-                  <span style={{ fontSize: 14 }}>Behavioral Activity</span>
+                  <span style={{ fontSize: 14 }}>{this.state.chartTitle}</span>
                   <div className="text-right">
                     <div className="circle-domestic"></div> <span style={{ display: "inline-block", marginLeft: 5, fontSize: 12 }}>Call</span>
                     <div className="circle-burglary" style={{ marginLeft: 10 }}></div> <span style={{ display: "inline-block", marginLeft: 5, fontSize: 12 }}>Text</span>
