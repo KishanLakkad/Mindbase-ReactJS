@@ -645,7 +645,7 @@ class IndicatorOverView extends React.Component {
                 ];
               });
               chartObj = {};
-              chartObj['label'] = self.state.moodList[self.state.activeMoodIndex].shortTitle;
+              chartObj['label'] = "Text";
               chartObj['data'] = groupArrays;
               chartData.push(chartObj);
               self.setState({
